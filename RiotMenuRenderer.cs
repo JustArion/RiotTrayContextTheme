@@ -146,22 +146,19 @@ public class RiotMenuRenderer() : ToolStripProfessionalRenderer(new RiotMenuColo
     {
         if (e.Item == null)
             return;
-        
+
         var graph = e.Graphics;
         var arrowSize = new Size(5, 12);
         var arrowColor = e.Item.Selected ? Color.White : textColor;
-        var rect = new Rectangle(e.ArrowRectangle.Location.X, (e.ArrowRectangle.Height - arrowSize.Height) / 2,
-            arrowSize.Width, arrowSize.Height);
-        
-        // We Move the arrow on the X-Axis -50px
-        rect.X = (int)(rect.X / 1.85);
+        const int rightMargin = 20;
 
-        if (!string.IsNullOrWhiteSpace(e.Item.Text))
-            rect.X = Math.Clamp(rect.X - e.Item.Text.Length * 8, e.Item.Text.Length * 10, int.MaxValue);
+        // Position arrow on the right side with margin
+        var arrowX = e.Item.Width - arrowSize.Width - rightMargin;
+        var arrowY = (e.Item.Height - arrowSize.Height) / 2;
+        var rect = new Rectangle(arrowX, arrowY, arrowSize.Width, arrowSize.Height);
 
         using var path = new GraphicsPath();
         using var pen = new Pen(arrowColor, arrowThickness);
-        //Drawing
         graph.SmoothingMode = SmoothingMode.AntiAlias;
         path.AddLine(rect.Left, rect.Top, rect.Right, rect.Top + rect.Height / 2);
         path.AddLine(rect.Right, rect.Top + rect.Height / 2, rect.Left, rect.Top + rect.Height);
