@@ -130,15 +130,19 @@ public sealed class RiotContextMenuStrip : ContextMenuStrip
     private Bitmap? menuItemHeaderSize;
 
     [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public bool IsMainMenu { get; set; }
 
     [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public int MenuItemHeight { get; set; } = 25;
 
     [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public Color MenuItemTextColor { get; set; } = Color.Empty;
 
     [Browsable(false)]
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
     public Color PrimaryColor { get; set; } = Color.Empty;
 
     private void LoadMenuItemHeight()
